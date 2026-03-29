@@ -69,7 +69,9 @@ export default function CalendlyInlineEmbed({
     <div
       ref={containerRef}
       className={`overflow-hidden rounded-2xl ${className}`}
-      style={{ minWidth: 320, height: 700 }}
+      // Slightly taller height so the full Calendly view fits comfortably
+      // without an internal scrollbar, while still looking like a clean card.
+      style={{ minWidth: 320, width: "100%", height: 900 }}
     />
   );
 }

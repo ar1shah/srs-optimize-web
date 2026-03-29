@@ -3,8 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import ClientTestimonials from "@/components/home/ClientTestimonials";
 import CalendlyInlineEmbed from "@/components/calendly/CalendlyInlineEmbed";
 import FAQAccordion from "@/components/apply/FAQAccordion";
 import { siteConfig } from "@/lib/config";
@@ -53,13 +53,6 @@ const faqItems = [
   },
 ];
 
-const proofCards = [
-  "20+ hours/week freed up from repetitive admin work",
-  "VA systems installed for lead handling and customer support",
-  "Backend processes built that eliminated key bottlenecks",
-  "Faster response times and improved operational output",
-];
-
 const forYou = [
   "Your business already has traction",
   "You are doing too much manually",
@@ -79,7 +72,7 @@ export default function ApplyPage() {
       <Header minimal />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 sm:pt-40 sm:pb-28">
+      <section className="pt-32 pb-12 sm:pt-40 sm:pb-16">
         <Container narrow>
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
@@ -95,44 +88,8 @@ export default function ApplyPage() {
         </Container>
       </section>
 
-      {/* Steps */}
-      <section className="border-t border-border py-20 sm:py-28">
-        <Container narrow>
-          <div className="grid gap-10 md:grid-cols-2">
-            <div className="flex gap-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-lg font-bold text-background">
-                1
-              </span>
-              <div>
-                <h3 className="text-lg font-semibold">
-                  Watch the short video
-                </h3>
-                <p className="mt-2 leading-relaxed text-muted">
-                  Learn who this is for, what SRS does, what problems we solve,
-                  how the call works, and who should not book.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-lg font-bold text-background">
-                2
-              </span>
-              <div>
-                <h3 className="text-lg font-semibold">
-                  Apply &amp; book your strategy call
-                </h3>
-                <p className="mt-2 leading-relaxed text-muted">
-                  Complete the short form below and pick a time that works for
-                  you.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* Video */}
-      <section className="py-20 sm:py-28">
+      <section className="pb-12 sm:pb-16">
         <Container narrow>
           <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-surface">
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -154,6 +111,18 @@ export default function ApplyPage() {
             Watch this short video to understand how SRS works and whether this
             is the right fit for you.
           </p>
+        </Container>
+      </section>
+
+      {/* Booking */}
+      <section id="book" className="pb-20 sm:pb-28">
+        <Container narrow>
+          <SectionHeading
+            title="Book Your Strategy Call"
+            subtitle="Select a time below to schedule your free strategy session."
+            className="mb-12"
+          />
+          <CalendlyInlineEmbed url={siteConfig.calendlyUrl} />
         </Container>
       </section>
 
@@ -189,38 +158,8 @@ export default function ApplyPage() {
         </Container>
       </section>
 
-      {/* Booking */}
-      <section id="book" className="py-20 sm:py-28">
-        <Container narrow>
-          <SectionHeading
-            title="Book Your Strategy Call"
-            subtitle="Select a time below to schedule your free strategy session."
-            className="mb-12"
-          />
-          <CalendlyInlineEmbed url={siteConfig.calendlyUrl} />
-        </Container>
-      </section>
-
-      {/* Proof / Results */}
-      <section className="border-t border-border py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Results"
-            title="What clients experience"
-            className="mb-14"
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {proofCards.map((text) => (
-              <Card key={text}>
-                <p className="text-base leading-relaxed">{text}</p>
-              </Card>
-            ))}
-          </div>
-          <p className="mt-8 text-center text-sm text-muted">
-            Detailed case studies and screenshots coming soon.
-          </p>
-        </Container>
-      </section>
+      {/* Results — testimonials */}
+      <ClientTestimonials />
 
       {/* Repeated CTA */}
       <section className="py-20 sm:py-28">
